@@ -1,0 +1,11 @@
+@import url(./__grid/elements__grid.css);
+@import url(./__place/elements__place.css);
+@import url(./__image/elements__image.css);
+@import url(./__title-container/elements__title-container.css);
+@import url(./__title/elements__title.css);
+@import url(./__like-button/elements__like-button.css);
+
+.elements {
+  padding-top: 50px;
+  margin: 0 auto;
+}
