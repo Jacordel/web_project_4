@@ -6,6 +6,7 @@
   line-height: 48px;
   margin: 0;
   padding-right: 18px;
+  word-break: break-word;
 }
 
 @media screen and (max-width: 320px) {
