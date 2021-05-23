@@ -4,6 +4,12 @@
   padding: 7px;
   border: solid 1px #fff;
   align-self: center;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6
 }
 
 @media screen and (max-width: 320px) {

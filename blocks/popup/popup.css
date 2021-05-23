@@ -15,7 +15,8 @@
   padding: 30px;
   box-sizing: border-box;
   display: flex;
-  display: none;
+  /**this is to hide the popup**/
+  display: none; 
 }
 
 @media screen and (max-width: 320px) {

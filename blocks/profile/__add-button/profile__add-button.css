@@ -4,4 +4,10 @@
   padding: 14px 64px;
   border: solid 1px #fff;
   align-self: center;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6
 }
