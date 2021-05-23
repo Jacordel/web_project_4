@@ -1,0 +1,17 @@
+@import url(./__name/edit-form__name.css);
+@import url(./__about-me/edit-form__about-me.css);
+@import url(./__button/edit-form__button.css);
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 320px) {
+  .edit-form {
+    max-width: 238px;
+    padding-bottom: 25px;
+  }
+}

@@ -1,0 +1,25 @@
+@import url(./__box/popup__box.css);
+@import url(./__title/popup__title.css);
+@import url(./__close-btn/popup__close-btn.css);
+
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.50);
+  z-index: 1;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  display: none;
+}
+
+@media screen and (max-width: 320px) {
+  .popup {
+    padding: 19px;
+  }
+}
