@@ -14,3 +14,4 @@ This project included the following technologies:
 #### Link to GitHub Pages
 
 This is the link to my github page:
+https://jacordel.github.io/web_project_4/
