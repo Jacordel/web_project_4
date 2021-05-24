@@ -1,4 +1,14 @@
 .elements__like-button {
+  background-image: url(../../../images/like-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 19px;
+  border: none;
+  background-color: transparent;
+  align-self: center;
+  width: 21px;
+  height: 19px;
+  padding: 0;
   transition: opacity 0.3s;
 }
 
