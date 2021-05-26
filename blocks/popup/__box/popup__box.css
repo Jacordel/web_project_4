@@ -1,7 +1,6 @@
 .popup__box {
   margin: auto;
   width: 430px;
-  height: 330px;
   background-color: #fff;
   border-radius: 10px;
   position: relative;
@@ -10,6 +9,5 @@
 @media screen and (max-width: 320px) {
   .popup__box {
     width: 282px;
-    height: 322px;
   }
 }

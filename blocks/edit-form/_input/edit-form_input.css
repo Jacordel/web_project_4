@@ -1,0 +1,17 @@
+.edit-form_input {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  height: 27px;
+}
+
+@media screen and (max-width: 320px) {
+  .edit-form_input {
+    height: 26px;
+  }
+}

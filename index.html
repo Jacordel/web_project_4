@@ -10,17 +10,6 @@
 
   <body class="page">
     <div class="page__wrapper">
-      <div class="popup">
-        <div class="popup__box">
-          <button class="popup__close-btn" type="button"></button>
-          <p class="popup__title">Edit profile</p>
-          <form class="edit-form">
-            <input class="edit-form__name" type="text" name="form-name" />
-            <input class="edit-form__about-me" type="text" name="about-me" />
-            <button class="edit-form__button" type="submit">Save</button>
-          </form>
-        </div>
-      </div>
       <header class="header">
         <img class="header__logo" src="images/Around-the-us.svg" alt="logo" />
       </header>
@@ -50,8 +39,8 @@
                 alt="Picture of beautiful Yosemite Valley"
               />
               <div class="elements__title-container">
-                <p class="elements__title">Yosemite Valley</p>
-                <button class="elements__like-button"></button>
+                <h2 class="elements__title">Yosemite Valley</h2>
+                <button class="elements__like-button" type="button"></button>
               </div>
             </li>
 
@@ -62,8 +51,8 @@
                 alt="Picture of beautiful Lake Louise"
               />
               <div class="elements__title-container">
-                <p class="elements__title">Lake Louise</p>
-                <button class="elements__like-button"></button>
+                <h2 class="elements__title">Lake Louise</h2>
+                <button class="elements__like-button" type="button"></button>
               </div>
             </li>
 
@@ -74,8 +63,8 @@
                 alt="Picture of beautiful Bald Mountains"
               />
               <div class="elements__title-container">
-                <p class="elements__title">Bald Mountains</p>
-                <button class="elements__like-button"></button>
+                <h2 class="elements__title">Bald Mountains</h2>
+                <button class="elements__like-button" type="button"></button>
               </div>
             </li>
 
@@ -86,8 +75,8 @@
                 alt="Picture of beautiful Latemar"
               />
               <div class="elements__title-container">
-                <p class="elements__title">Latemar</p>
-                <button class="elements__like-button"></button>
+                <h2 class="elements__title">Latemar</h2>
+                <button class="elements__like-button" type="button"></button>
               </div>
             </li>
 
@@ -98,8 +87,8 @@
                 alt="Picture of beautiful Vanoise National Park"
               />
               <div class="elements__title-container">
-                <p class="elements__title">Vanoise National Park</p>
-                <button class="elements__like-button"></button>
+                <h2 class="elements__title">Vanoise National Park</h2>
+                <button class="elements__like-button" type="button"></button>
               </div>
             </li>
 
@@ -110,8 +99,8 @@
                 alt="Picture of beautiful Lago di Braies"
               />
               <div class="elements__title-container">
-                <p class="elements__title">Lago di Braies</p>
-                <button class="elements__like-button"></button>
+                <h2 class="elements__title">Lago di Braies</h2>
+                <button class="elements__like-button" type="button"></button>
               </div>
             </li>
           </ul>
@@ -120,6 +109,25 @@
       <footer class="footer">
         <p class="footer__text">&#169; 2021 Around the US.</p>
       </footer>
+      <div class="popup">
+        <div class="popup__box">
+          <button class="popup__close-btn" type="button"></button>
+          <h2 class="popup__title">Edit profile</h2>
+          <form class="edit-form" name="edit-form">
+            <input
+              class="edit-form_input edit-form__name"
+              type="text"
+              name="form-name"
+            />
+            <input
+              class="edit-form_input edit-form__about-me"
+              type="text"
+              name="about-me"
+            />
+            <button class="edit-form__button" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
     <script src="scripts/index.js" type="text/javascript"></script>
   </body>
