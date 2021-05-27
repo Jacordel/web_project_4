@@ -10,6 +10,7 @@ const popupEl = document.querySelector('.popup');
 const profileNameEl = document.querySelector('.profile__name');
 const profileProfessionEl = document.querySelector('.profile__profession');
 
+//enables popup to open
 function openPopup() {
   popupEl.classList.add('popup_open');
 }
@@ -20,11 +21,11 @@ function closePopup() {
 }
 popupCloseBtnEl.addEventListener('click', closePopup);
 
-function nameValue() {
-  editFormNameInput.value = profileNameEl.textContent();
-  editFormAboutMeInput.value = profileProfessionEl.textContent();
-};
+//enables input values to be displayed as the profile data
+editFormNameInput.value = profileNameEl.textContent;
+editFormAboutMeInput.value = profileProfessionEl.textContent;
 
+//enables profile data to equal input value of popup
 function handleFormSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editFormNameInput.value;
