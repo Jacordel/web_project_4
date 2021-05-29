@@ -1,6 +1,8 @@
 @import url(./__name/edit-form__name.css);
 @import url(./__about-me/edit-form__about-me.css);
 @import url(./__button/edit-form__button.css);
+@import url(./__input/edit-form__input.css);
+
 .edit-form {
   display: flex;
   flex-direction: column;
