@@ -1,6 +1,6 @@
 const editFormEl = document.querySelector('.edit-form');
-const editFormNameInput = document.querySelector('.edit-form_input_name');
-const editFormAboutMeInput = document.querySelector('.edit-form_input_about-me');
+const editFormNameInput = document.querySelector('.edit-form__input_type_name');
+const editFormAboutMeInput = document.querySelector('.edit-form__input_type_about-me');
 
 const profileEditBtnEl = document.querySelector('.profile__edit-button');
 const popupCloseBtnEl = document.querySelector('.popup__close-btn');
