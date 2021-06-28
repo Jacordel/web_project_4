@@ -39,7 +39,7 @@
       <footer class="footer">
         <p class="footer__text">&#169; 2021 Around the US.</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup_type_edit">
         <div class="popup__box">
           <button class="popup__close-btn" type="button"></button>
           <h2 class="popup__title">Edit profile</h2>
@@ -60,6 +60,31 @@
           </form>
         </div>
       </div>
+
+      <div class="popup popup_type_add">
+        <div class="popup__box">
+          <button class="popup__close-btn" type="button"></button>
+          <h2 class="popup__title">New Place</h2>
+          <form class="add-form" name="add-form">
+            <input
+              class="edit-form__input add-form__input_type_title"
+              type="text"
+              name="title"
+              placeholder="Title"
+              required
+            />
+            <input
+              class="edit-form__input add-form__input_type_link"
+              type="text"
+              name="image-link"
+              placeholder="Image link"
+              required
+            />
+            <button class="edit-form__button" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+
     </div>
     <script src="scripts/index.js" defer></script>
 

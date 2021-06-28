@@ -34,8 +34,10 @@ const elementTemplate = document.querySelector("#element-template").content.quer
 ////////////
 //wrappers
 ////////////
-const popupEl = document.querySelector('.popup');
+const editPopupEl = document.querySelector('.popup_type_edit');
+const addPopupEl = document.querySelector('.popup_type_add');
 const editFormEl = document.querySelector('.edit-form');
+const addFormEl = document.querySelector('.add-form');
 const placesList = document.querySelector('.elements__grid');
 
 
@@ -43,38 +45,82 @@ const placesList = document.querySelector('.elements__grid');
 //buttons and elements
 ////////////
 const profileEditBtnEl = document.querySelector('.profile__edit-button');
+const profileAddBtnEl = document.querySelector('.profile__add-button');
 const popupCloseBtnEl = document.querySelector('.popup__close-btn');
 const profileNameEl = document.querySelector('.profile__name');
 const profileProfessionEl = document.querySelector('.profile__profession');
 
 
 ////////////
-//what the user will input in the form elements
+//when the user will input in the form elements
 ////////////
 const editFormNameInput = document.querySelector('.edit-form__input_type_name');
 const editFormAboutMeInput = document.querySelector('.edit-form__input_type_about-me');
 
 
 ////////////
-//enables popup to open
+//when the user adds a new card
 ////////////
-function openPopup() {
-  popupEl.classList.add('popup_open');
+const addFormTitleInput = document.querySelector('.add-form__input_type_title');
+const addFormLinkInput = document.querySelector('.add-form__input_type_link');
+
+
+////////////
+//enables edit-popup to open
+////////////
+function openEditPopup() {
+  editPopupEl.classList.add('popup_open');
   //enables input values to be displayed as the profile data
   editFormNameInput.value = profileNameEl.textContent;
   editFormAboutMeInput.value = profileProfessionEl.textContent;
 }
-profileEditBtnEl.addEventListener('click', openPopup);
-
+profileEditBtnEl.addEventListener('click', openEditPopup);
 
 ////////////
-//enables popup to close
+//enables edit-popup to close
 ////////////
-function closePopup() {
-  popupEl.classList.remove('popup_open');
+function closeEditPopup() {
+  editPopupEl.classList.remove('popup_open');
 }
-popupCloseBtnEl.addEventListener('click', closePopup);
+popupCloseBtnEl.addEventListener('click', closeEditPopup);
 
+
+////////////
+//enables add-popup to open
+////////////
+function openAddPopup() {
+  addPopupEl.classList.add('popup_open');
+}
+profileAddBtnEl.addEventListener('click', openAddPopup);
+
+
+////////////
+//enables add-popup to close
+////////////
+function closeAddPopup() {
+  addPopupEl.classList.remove('popup_open');
+}
+popupCloseBtnEl.addEventListener('click', closeAddPopup);
+
+
+
+////////////
+//function helpers
+////////////
+function renderCard(cardElement) {
+  placesList.append(cardElement);
+};
+
+function generateCard(card){
+  //clone template
+  const cardElement = elementTemplate.cloneNode(true);
+  //query name element from the clone template
+  const nameElement = cardElement.querySelector('.elements__title').textContent = card.name;
+  //query image element from the clone template
+  const imageElement = cardElement.querySelector('.elements__image').src = card.link;
+  //set value for title and image
+  return cardElement;
+};
 
 ////////////
 //enables profile data to equal input value of popup
@@ -88,16 +134,8 @@ function handleFormSubmit(evt) {
 editFormEl.addEventListener('submit', handleFormSubmit);
 
 initialCards.forEach(card => {
-  //clone template
-  const cardElement = elementTemplate.cloneNode(true);
-  //query name element 
-  const nameElement = elementTemplate.querySelector('.elements__title');
-  //query image element
-  const imageElement = elementTemplate.querySelector('.elements__image');
-  //set value for title and image
-  nameElement.textContent = card.name;
-  imageElement.src = card.link;
+  const cardElement = generateCard(card);
   //append the card
-  placesList.append(cardElement);
+  renderCard(cardElement);
 });
 
