@@ -32,6 +32,3 @@ function handleFormSubmit(evt) {
   closePopup();
 };
 editFormEl.addEventListener('submit', handleFormSubmit);
-
-
-
