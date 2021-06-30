@@ -1,0 +1,14 @@
+.add-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 358px;
+  margin: 0 auto;
+  padding-bottom: 36.5px;
+}
+
+@media screen and (max-width: 320px) {
+  .add-form {
+    max-width: 238px;
+    padding-bottom: 25px;
+  }
+}

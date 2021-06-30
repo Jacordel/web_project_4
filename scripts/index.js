@@ -46,7 +46,8 @@ const placesList = document.querySelector('.elements__grid');
 ////////////
 const profileEditBtnEl = document.querySelector('.profile__edit-button');
 const profileAddBtnEl = document.querySelector('.profile__add-button');
-const popupCloseBtnEl = document.querySelector('.popup__close-btn');
+const editPopupCloseBtn = document.querySelector('.popup_type_edit').querySelector('.popup__close-btn');
+const addPopupCloseBtn = document.querySelector('.popup_type_add').querySelector('.popup__close-btn');
 const profileNameEl = document.querySelector('.profile__name');
 const profileProfessionEl = document.querySelector('.profile__profession');
 
@@ -82,7 +83,7 @@ profileEditBtnEl.addEventListener('click', openEditPopup);
 function closeEditPopup() {
   editPopupEl.classList.remove('popup_open');
 }
-popupCloseBtnEl.addEventListener('click', closeEditPopup);
+editPopupCloseBtn.addEventListener('click', closeEditPopup);
 
 
 ////////////
@@ -100,8 +101,7 @@ profileAddBtnEl.addEventListener('click', openAddPopup);
 function closeAddPopup() {
   addPopupEl.classList.remove('popup_open');
 }
-popupCloseBtnEl.addEventListener('click', closeAddPopup);
-
+addPopupCloseBtn.addEventListener('click', closeAddPopup);
 
 
 ////////////
