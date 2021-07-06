@@ -105,6 +105,31 @@ addPopupCloseBtn.addEventListener('click', closeAddPopup);
 
 
 ////////////
+//enables to add a new card
+////////////
+function createCard() {
+  //copy template
+  const newCard = elementTemplate.cloneNode(true);
+  //create the html
+  const newCardName = newCard.querySelector('.elements__title').textContent = card.name
+  const imageElement = newCard.querySelector('.elements__image').src = card.link;
+  //unshift info into card
+  initialCards.unshift(newPlace)
+  return newCard
+}
+
+addFormEl.addEventListener("submit", function(evt) {
+  evt.preventDefault();
+  const newPlace = {
+    name: document.querySelector('.add-form__input_type_title').value,
+    link: document.querySelector('.add-form__input_type_link').value
+  };
+  createCard(newPlace);
+  closeAddPopup();
+  });
+
+
+////////////
 //function helpers
 ////////////
 function renderCard(cardElement) {
@@ -122,6 +147,8 @@ function generateCard(card){
   return cardElement;
 };
 
+
+
 ////////////
 //enables profile data to equal input value of popup
 ////////////
@@ -129,7 +156,7 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editFormNameInput.value;
   profileProfessionEl.textContent = editFormAboutMeInput.value;
-  closePopup(); 
+  closeEditPopup(); 
 }; 
 editFormEl.addEventListener('submit', handleFormSubmit);
 
@@ -138,4 +165,3 @@ initialCards.forEach(card => {
   //append the card
   renderCard(cardElement);
 });
-

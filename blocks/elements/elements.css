@@ -4,6 +4,7 @@
 @import url(./__title-container/elements__title-container.css);
 @import url(./__title/elements__title.css);
 @import url(./__like-button/elements__like-button.css);
+@import url(./__trash-button/elements__trash-button.css);
 
 .elements {
   padding-top: 50px;

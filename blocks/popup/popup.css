@@ -1,6 +1,9 @@
 @import url(./__box/popup__box.css);
 @import url(./__title/popup__title.css);
+@import url(./__preview-image/popup__preview-image.css);
 @import url(./__close-btn/popup__close-btn.css);
+@import url(./__figure/popup__figure.css);
+@import url(./__figure-caption/popup__figure-capion.css);
 
 .popup {
   height: 100vh;

@@ -32,8 +32,7 @@
 
         <section class="elements">
           <!--elements List-->
-          <ul class="elements__grid">
-          </ul>
+          <ul class="elements__grid"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -80,16 +79,30 @@
               placeholder="Image link"
               required
             />
-            <button class="edit-form__button" type="submit">Save</button>
+            <button class="edit-form__button" type="submit">Create</button>
           </form>
         </div>
       </div>
 
+      <div class="popup popup_type_preview">
+        <div class="popup__box popup__box_type_preview">
+          <button class="popup__close-btn" type="button"></button>
+          <figure class="popup__figure">
+            <img
+              class="popup__preview-image"
+              src=""
+              alt=""
+            />
+            <figcaption class="popup__figure-caption">This is a figcaption</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
     <script src="scripts/index.js" defer></script>
 
     <template id="element-template">
       <li class="elements__place">
+        <button class="elements__trash-button" type="button"></button>
         <img class="elements__image" src="" />
         <div class="elements__title-container">
           <h2 class="elements__title"></h2>
