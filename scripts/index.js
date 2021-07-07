@@ -108,7 +108,7 @@ addPopupCloseBtn.addEventListener('click', closeAddPopup);
 //enables to open preview popup
 ///////////
 
-function handlePreviewPicture(card) {
+function handlePreviewPicture(preview) {
   openPreviewPopup.classList.add('popup_open');
 
   const previewCard = {
@@ -119,12 +119,11 @@ function handlePreviewPicture(card) {
   console.log(previewCard);
 
   // src = card.link
-  // previewCard.querySelector('.popup__preview-image').src = card.link;
-  // console.log()
+  document.querySelector('.popup__preview-image').src = preview.link;
   // // caption = card.name
-  // previewCard.querySelector('.popup__figure-caption').textContent = card.name;
+  document.querySelector('.popup__figure-caption').textContent = preview.name;
   // // alt = card.name
-  // previewCard.querySelector('.popup__preview-image').alt = card.name;
+  document.querySelector('.popup__preview-image').alt = preview.name;
 };
 
 function closePlacePreview() {
