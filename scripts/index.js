@@ -31,11 +31,12 @@ const initialCards = [
 const elementTemplate = document.querySelector("#element-template").content.querySelector('.elements__place');
 
 
-////////////
+//////////
 //wrappers
 ////////////
 const editPopupEl = document.querySelector('.popup_type_edit');
 const addPopupEl = document.querySelector('.popup_type_add');
+const openPreviewPopup = document.querySelector('.popup_type_preview');
 const editFormEl = document.querySelector('.edit-form');
 const addFormEl = document.querySelector('.add-form');
 const placesList = document.querySelector('.elements__grid');
@@ -48,9 +49,9 @@ const profileEditBtnEl = document.querySelector('.profile__edit-button');
 const profileAddBtnEl = document.querySelector('.profile__add-button');
 const editPopupCloseBtn = document.querySelector('.popup_type_edit').querySelector('.popup__close-btn');
 const addPopupCloseBtn = document.querySelector('.popup_type_add').querySelector('.popup__close-btn');
+const previewCloseBtn = document.querySelector('.popup_type_preview').querySelector('.popup__close-btn');
 const profileNameEl = document.querySelector('.profile__name');
 const profileProfessionEl = document.querySelector('.profile__profession');
-
 
 ////////////
 //when the user will input in the form elements
@@ -103,20 +104,53 @@ function closeAddPopup() {
 }
 addPopupCloseBtn.addEventListener('click', closeAddPopup);
 
+///////////
+//enables to open preview popup
+///////////
+
+function handlePreviewPicture(card) {
+  openPreviewPopup.classList.add('popup_open');
+
+  const previewCard = {
+    name: document.querySelector('.elements__place').querySelector('.elements__title').value,
+    link: document.querySelector('.elements__place').querySelector('.elements__image').value,
+    alt: document.querySelector('.elements__place').querySelector('.elements__title').value
+  };  
+  console.log(previewCard);
+
+  // src = card.link
+  // previewCard.querySelector('.popup__preview-image').src = card.link;
+  // console.log()
+  // // caption = card.name
+  // previewCard.querySelector('.popup__figure-caption').textContent = card.name;
+  // // alt = card.name
+  // previewCard.querySelector('.popup__preview-image').alt = card.name;
+};
+
+function closePlacePreview() {
+  openPreviewPopup.classList.remove('popup_open');
+}
+previewCloseBtn.addEventListener('click', closePlacePreview);
+
 
 ////////////
 //enables to add a new card
 ////////////
-function createCard() {
-  //copy template
+function createCard(card) {
+  //clone template
   const newCard = elementTemplate.cloneNode(true);
-  //create the html
-  const newCardName = newCard.querySelector('.elements__title').textContent = card.name
-  const imageElement = newCard.querySelector('.elements__image').src = card.link;
-  //unshift info into card
-  initialCards.unshift(newPlace)
+  //query info
+  newCard.querySelector('.elements__title').textContent = card.name,
+  newCard.querySelector('.elements__image').src = card.link;
+  //event listener for preview image
+  const previewImageEl = newCard.querySelector('.elements__image');
+  previewImageEl.addEventListener('click', () => {
+    handlePreviewPicture(newCard);
+    //run function for trash button
+    //run function for like-button
+  });
   return newCard
-}
+};
 
 addFormEl.addEventListener("submit", function(evt) {
   evt.preventDefault();
@@ -124,7 +158,7 @@ addFormEl.addEventListener("submit", function(evt) {
     name: document.querySelector('.add-form__input_type_title').value,
     link: document.querySelector('.add-form__input_type_link').value
   };
-  createCard(newPlace);
+  renderCard(createCard(newPlace));
   closeAddPopup();
   });
 
@@ -133,20 +167,8 @@ addFormEl.addEventListener("submit", function(evt) {
 //function helpers
 ////////////
 function renderCard(cardElement) {
-  placesList.append(cardElement);
+  placesList.prepend(cardElement);
 };
-
-function generateCard(card){
-  //clone template
-  const cardElement = elementTemplate.cloneNode(true);
-  //query name element from the clone template
-  const nameElement = cardElement.querySelector('.elements__title').textContent = card.name;
-  //query image element from the clone template
-  const imageElement = cardElement.querySelector('.elements__image').src = card.link;
-  //set value for title and image
-  return cardElement;
-};
-
 
 
 ////////////
@@ -161,7 +183,7 @@ function handleFormSubmit(evt) {
 editFormEl.addEventListener('submit', handleFormSubmit);
 
 initialCards.forEach(card => {
-  const cardElement = generateCard(card);
+  const cardElement = createCard(card);
   //append the card
   renderCard(cardElement);
 });
