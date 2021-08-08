@@ -116,7 +116,6 @@ function handlePreviewPicture(preview) {
     link: document.querySelector('.elements__place').querySelector('.elements__image').value,
     alt: document.querySelector('.elements__place').querySelector('.elements__title').value
   };  
-  console.log(previewCard);
 
   // src = card.link
   document.querySelector('.popup__preview-image').src = preview.link;
@@ -128,9 +127,15 @@ function handlePreviewPicture(preview) {
 
 function closePlacePreview() {
   openPreviewPopup.classList.remove('popup_open');
-}
+};
 previewCloseBtn.addEventListener('click', closePlacePreview);
 
+////////////
+//function to delete a card
+////////////
+function deleteCard () {
+  trashbutton.remove('#element-template');
+};
 
 ////////////
 //enables to add a new card
@@ -144,12 +149,13 @@ function createCard(card) {
   //event listener for preview image
   const previewImageEl = newCard.querySelector('.elements__image');
   previewImageEl.addEventListener('click', () => {
-    handlePreviewPicture(newCard);
-    //run function for trash button
-    //run function for like-button
+    handlePreviewPicture(card);
+    //call function for trash button
+    //call function for like-button
   });
-  return newCard
+return newCard
 };
+
 
 addFormEl.addEventListener("submit", function(evt) {
   evt.preventDefault();
