@@ -1,4 +1,4 @@
-.edit-form__input {
+.edit-form__fill-in {
   font-family: 'Inter', 'Arial', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -11,16 +11,16 @@
   margin-bottom: 30px;
 }
 
-.edit-form__input:last-child {
+.edit-form__fill-in:last-child {
   margin-bottom: 48px;
 }
 
 @media screen and (max-width: 320px) {
-  .edit-form__input {
+  .edit-form__fill-in {
     height: 26px;
   }
 
-  .edit-form__input:last-child {
+  .edit-form__fill-in:last-child {
     margin-bottom: 46px;
   }
 }

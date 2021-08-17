@@ -62,16 +62,16 @@ const profileProfessionEl = document.querySelector(".profile__profession");
 ////////////
 //when the user will input in the form elements
 ////////////
-const editFormNameInput = document.querySelector(".edit-form__input_type_name");
+const editFormNameInput = document.querySelector(".edit-form__fill-in_type_name");
 const editFormAboutMeInput = document.querySelector(
-  ".edit-form__input_type_about-me"
+  ".edit-form__fill-in_type_about-me"
 );
 
 ////////////
 //when the user adds a new card
 ////////////
-const addFormTitleInput = document.querySelector(".add-form__input_type_title");
-const addFormLinkInput = document.querySelector(".add-form__input_type_link");
+const addFormTitleInput = document.querySelector(".add-form__fill-in_type_title");
+const addFormLinkInput = document.querySelector(".add-form__fill-in_type_link");
 
 ////////////
 //enables edit-popup to open
@@ -181,8 +181,8 @@ function createCard(card) {
 addFormEl.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const newPlace = {
-    name: document.querySelector(".add-form__input_type_title").value,
-    link: document.querySelector(".add-form__input_type_link").value,
+    name: document.querySelector(".add-form__fill-in_type_title").value,
+    link: document.querySelector(".add-form__fill-in_type_link").value,
   };
   renderCard(createCard(newPlace));
   closeAddPopup();

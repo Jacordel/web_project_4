@@ -1,5 +1,5 @@
 @import url(./__button/edit-form__button.css);
-@import url(./__input/edit-form__input.css);
+@import url(./__fill-in/edit-form__fill-in.css);
 
 .edit-form {
   display: flex;
