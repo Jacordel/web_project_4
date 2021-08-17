@@ -115,7 +115,6 @@ function handlePreviewPicture(preview) {
   openPreviewPopup.classList.add("popup_open");
 
   const previewCard = {
-<<<<<<< HEAD
     name: document
       .querySelector(".elements__place")
       .querySelector(".elements__title").value,
@@ -126,13 +125,6 @@ function handlePreviewPicture(preview) {
       .querySelector(".elements__place")
       .querySelector(".elements__title").value,
   };
-=======
-    name: document.querySelector('.elements__place').querySelector('.elements__title').value,
-    link: document.querySelector('.elements__place').querySelector('.elements__image').value,
-    alt: document.querySelector('.elements__place').querySelector('.elements__title').value
-  };  
-
->>>>>>> 5feb29afb2063b1ae07e801b1aae17d774a768f0
   // src = card.link
   document.querySelector(".popup__preview-image").src = preview.link;
   // // caption = card.name
@@ -142,7 +134,6 @@ function handlePreviewPicture(preview) {
 }
 
 function closePlacePreview() {
-<<<<<<< HEAD
   openPreviewPopup.classList.remove("popup_open");
 }
 previewCloseBtn.addEventListener("click", closePlacePreview);
@@ -162,18 +153,6 @@ function handleLikeCard(evt) {
   // toggle modifier class
   evt.target.classList.toggle("elements__like-button_active");
 }
-=======
-  openPreviewPopup.classList.remove('popup_open');
-};
-previewCloseBtn.addEventListener('click', closePlacePreview);
-
-////////////
-//function to delete a card
-////////////
-function deleteCard () {
-  trashbutton.remove('#element-template');
-};
->>>>>>> 5feb29afb2063b1ae07e801b1aae17d774a768f0
 
 ////////////
 //enables to add a new card
@@ -185,7 +164,6 @@ function createCard(card) {
   (newCard.querySelector(".elements__title").textContent = card.name),
     (newCard.querySelector(".elements__image").src = card.link);
   //event listener for preview image
-<<<<<<< HEAD
   const previewImageEl = newCard.querySelector(".elements__image");
   previewImageEl.addEventListener("click", () => {
     handlePreviewPicture(card);
@@ -201,19 +179,6 @@ function createCard(card) {
 }
 
 addFormEl.addEventListener("submit", function (evt) {
-=======
-  const previewImageEl = newCard.querySelector('.elements__image');
-  previewImageEl.addEventListener('click', () => {
-    handlePreviewPicture(card);
-    //call function for trash button
-    //call function for like-button
-  });
-return newCard
-};
-
-
-addFormEl.addEventListener("submit", function(evt) {
->>>>>>> 5feb29afb2063b1ae07e801b1aae17d774a768f0
   evt.preventDefault();
   const newPlace = {
     name: document.querySelector(".add-form__input_type_title").value,
