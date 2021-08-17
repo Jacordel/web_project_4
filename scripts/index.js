@@ -1,4 +1,4 @@
-const initialCards = [
+const initialCards = [ 
   {
     name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
@@ -52,6 +52,7 @@ const addPopupCloseBtn = document.querySelector('.popup_type_add').querySelector
 const previewCloseBtn = document.querySelector('.popup_type_preview').querySelector('.popup__close-btn');
 const profileNameEl = document.querySelector('.profile__name');
 const profileProfessionEl = document.querySelector('.profile__profession');
+
 
 ////////////
 //when the user will input in the form elements
@@ -107,7 +108,6 @@ addPopupCloseBtn.addEventListener('click', closeAddPopup);
 ///////////
 //enables to open preview popup
 ///////////
-
 function handlePreviewPicture(preview) {
   openPreviewPopup.classList.add('popup_open');
 
@@ -116,8 +116,6 @@ function handlePreviewPicture(preview) {
     link: document.querySelector('.elements__place').querySelector('.elements__image').value,
     alt: document.querySelector('.elements__place').querySelector('.elements__title').value
   };  
-  console.log(previewCard);
-
   // src = card.link
   document.querySelector('.popup__preview-image').src = preview.link;
   // // caption = card.name
@@ -128,8 +126,24 @@ function handlePreviewPicture(preview) {
 
 function closePlacePreview() {
   openPreviewPopup.classList.remove('popup_open');
-}
+};
 previewCloseBtn.addEventListener('click', closePlacePreview);
+
+////////////
+//function to delete a card
+////////////
+ function handleDeleteCard(evt) {
+  evt.target.parentNode.remove();
+};
+
+// TODO: export images from figa (hollow heart && filled heart)
+// create modifier for clicked heart
+
+function handleLikeCard(evt) {
+  // get target from event
+  // toggle modifier class 
+  evt.target.classList.toggle('elements__like-button_active');
+};
 
 
 ////////////
@@ -144,12 +158,18 @@ function createCard(card) {
   //event listener for preview image
   const previewImageEl = newCard.querySelector('.elements__image');
   previewImageEl.addEventListener('click', () => {
-    handlePreviewPicture(newCard);
-    //run function for trash button
-    //run function for like-button
+    handlePreviewPicture(card);
   });
-  return newCard
+  //call function for trash button
+  const deleteButton = newCard.querySelector('.elements__trash-button');
+  deleteButton.addEventListener('click', handleDeleteCard);
+  // query for like button in newCard
+  const likeButton = newCard.querySelector('.elements__like-button');
+  // add event listener for like button - handleLikeCard
+  likeButton.addEventListener('click', handleLikeCard);
+return newCard
 };
+
 
 addFormEl.addEventListener("submit", function(evt) {
   evt.preventDefault();
