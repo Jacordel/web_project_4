@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-
 ////////////
 //template
 ////////////
@@ -37,7 +10,7 @@ const elementTemplate = document
 ////////////
 const editPopupEl = document.querySelector(".popup_type_edit");
 const addPopupEl = document.querySelector(".popup_type_add");
-const openPreviewPopup = document.querySelector(".popup_type_preview");
+const openPreviewPopupEl = document.querySelector(".popup_type_preview");
 const editFormEl = document.querySelector(".edit-form");
 const addFormEl = document.querySelector(".add-form");
 const placesList = document.querySelector(".elements__grid");
@@ -47,13 +20,13 @@ const placesList = document.querySelector(".elements__grid");
 ////////////
 const profileEditBtnEl = document.querySelector(".profile__edit-button");
 const profileAddBtnEl = document.querySelector(".profile__add-button");
-const editPopupCloseBtn = document
+const editPopupCloseBtnEl = document
   .querySelector(".popup_type_edit")
   .querySelector(".popup__close-btn");
-const addPopupCloseBtn = document
+const addPopupCloseBtnEl = document
   .querySelector(".popup_type_add")
   .querySelector(".popup__close-btn");
-const previewCloseBtn = document
+const previewCloseBtnEl = document
   .querySelector(".popup_type_preview")
   .querySelector(".popup__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
@@ -73,6 +46,17 @@ const editFormAboutMeInput = document.querySelector(
 const addFormTitleInput = document.querySelector(".add-form__input_type_title");
 const addFormLinkInput = document.querySelector(".add-form__input_type_link");
 
+//create a general function for opening popups
+function openPopup() {
+  
+}
+
+//create a general function for closing popups
+function closePopup() {
+
+}
+
+
 ////////////
 //enables edit-popup to open
 ////////////
@@ -90,7 +74,7 @@ profileEditBtnEl.addEventListener("click", openEditPopup);
 function closeEditPopup() {
   editPopupEl.classList.remove("popup_open");
 }
-editPopupCloseBtn.addEventListener("click", closeEditPopup);
+editPopupCloseBtnEl.addEventListener("click", closeEditPopup);
 
 ////////////
 //enables add-popup to open
@@ -106,13 +90,13 @@ profileAddBtnEl.addEventListener("click", openAddPopup);
 function closeAddPopup() {
   addPopupEl.classList.remove("popup_open");
 }
-addPopupCloseBtn.addEventListener("click", closeAddPopup);
+addPopupCloseBtnEl.addEventListener("click", closeAddPopup);
 
 ///////////
 //enables to open preview popup
 ///////////
 function handlePreviewPicture(preview) {
-  openPreviewPopup.classList.add("popup_open");
+  openPreviewPopupEl.classList.add("popup_open");
 
   const previewCard = {
     name: document
@@ -134,9 +118,9 @@ function handlePreviewPicture(preview) {
 }
 
 function closePlacePreview() {
-  openPreviewPopup.classList.remove("popup_open");
+  openPreviewPopupEl.classList.remove("popup_open");
 }
-previewCloseBtn.addEventListener("click", closePlacePreview);
+previewCloseBtnEl.addEventListener("click", closePlacePreview);
 
 ////////////
 //function to delete a card
@@ -144,9 +128,6 @@ previewCloseBtn.addEventListener("click", closePlacePreview);
 function handleDeleteCard(evt) {
   evt.target.parentNode.remove();
 }
-
-// TODO: export images from figa (hollow heart && filled heart)
-// create modifier for clicked heart
 
 function handleLikeCard(evt) {
   // get target from event
