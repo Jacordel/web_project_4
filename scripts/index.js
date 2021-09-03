@@ -22,8 +22,8 @@ const previewCloseBtnEl = document
   .querySelector(".popup__close-btn");
 const profileNameEl = document.querySelector(".profile__name");
 const profileProfessionEl = document.querySelector(".profile__profession");
-const previewImageEl = document.querySelector(".popup__preview-image")
-const figureCaptionEl = document.querySelector(".popup__figure-caption")
+const previewImageEl = document.querySelector(".popup__preview-image");
+const figureCaptionEl = document.querySelector(".popup__figure-caption");
 
 const editFormNameInput = document.querySelector(".edit-form__input_type_name");
 const editFormAboutMeInput = document.querySelector(
@@ -34,26 +34,28 @@ const addFormTitleInput = document.querySelector(".add-form__input_type_title");
 const addFormLinkInput = document.querySelector(".add-form__input_type_link");
 
 function openPopup(popup) {
-  popup.classList.add('popup_open');
+  popup.classList.add("popup_open");
 }
 
 function closePopup(popup) {
-  popup.classList.remove('popup_open');
-};
+  popup.classList.remove("popup_open");
+}
 
 function handlePreviewPicture(preview) {
   openPreviewPopupEl.classList.add("popup_open");
-  
+
   previewImageEl.src = preview.link;
   previewImageEl.alt = preview.name;
   figureCaptionEl.textContent = preview.name;
-};
+}
 
-editPopupCloseBtnEl.addEventListener('click', () => closePopup(editPopupEl));
-addPopupCloseBtnEl.addEventListener('click', () => closePopup(addPopupEl));
-previewCloseBtnEl.addEventListener('click', () => closePopup(openPreviewPopupEl));
-profileAddBtnEl.addEventListener('click', () => openPopup(addPopupEl));
-profileEditBtnEl.addEventListener('click', () => {
+editPopupCloseBtnEl.addEventListener("click", () => closePopup(editPopupEl));
+addPopupCloseBtnEl.addEventListener("click", () => closePopup(addPopupEl));
+previewCloseBtnEl.addEventListener("click", () =>
+  closePopup(openPreviewPopupEl)
+);
+profileAddBtnEl.addEventListener("click", () => openPopup(addPopupEl));
+profileEditBtnEl.addEventListener("click", () => {
   editFormNameInput.value = profileNameEl.textContent;
   editFormAboutMeInput.value = profileProfessionEl.textContent;
   openPopup(editPopupEl);
@@ -66,7 +68,6 @@ function handleDeleteCard(evt) {
 function handleLikeCard(evt) {
   evt.target.classList.toggle("elements__like-button_active");
 }
-
 
 function createCard(card) {
   const newCard = elementTemplate.cloneNode(true);
