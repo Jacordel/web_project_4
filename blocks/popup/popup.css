@@ -21,7 +21,7 @@
   display: flex;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear, pointer-events 0s linear 0.5s;
 }
 
 @media screen and (max-width: 320px) {
