@@ -1,17 +1,2 @@
 @import url(./__submit/edit-form__submit.css);
 @import url(./__input/edit-form__input.css);
-
-.edit-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 358px;
-  margin: 0 auto;
-  padding: 0 22px 36.5px 22px;
-}
-
-@media screen and (max-width: 320px) {
-  .edit-form {
-    max-width: 238px;
-    padding-bottom: 25px;
-  }
-}

@@ -7,6 +7,7 @@ const addPopupEl = document.querySelector(".popup_type_add");
 const openPreviewPopupEl = document.querySelector(".popup_type_preview");
 const editFormEl = document.querySelector(".edit-form");
 const addFormEl = document.querySelector(".add-form");
+const popupFormEl = document.querySelector(".popup__form");
 const placesList = document.querySelector(".elements__grid");
 
 const profileEditBtnEl = document.querySelector(".profile__edit-button");
@@ -25,13 +26,13 @@ const profileProfessionEl = document.querySelector(".profile__profession");
 const previewImageEl = document.querySelector(".popup__preview-image");
 const figureCaptionEl = document.querySelector(".popup__figure-caption");
 
-const editFormNameInput = document.querySelector(".edit-form__input_type_name");
+const editFormNameInput = document.querySelector(".popup__input_type_name");
 const editFormAboutMeInput = document.querySelector(
-  ".edit-form__input_type_about-me"
+  ".popup__input_type_about-me"
 );
 
-const addFormTitleInput = document.querySelector(".add-form__input_type_title");
-const addFormLinkInput = document.querySelector(".add-form__input_type_link");
+const addFormTitleInput = document.querySelector(".popup__input_type_title");
+const addFormLinkInput = document.querySelector(".popup__input_type_link");
 
 function openPopup(popup) {
   popup.classList.add("popup_open");
@@ -84,7 +85,7 @@ function createCard(card) {
   return newCard;
 }
 
-addFormEl.addEventListener("submit", function (evt) {
+popupFormEl.addEventListener("submit", function (evt) {
   evt.preventDefault();
   const newPlace = {
     name: addFormTitleInput.value,
@@ -104,7 +105,7 @@ function handleFormSubmit(evt) {
   profileProfessionEl.textContent = editFormAboutMeInput.value;
   closePopup(editPopupEl);
 }
-editFormEl.addEventListener("submit", handleFormSubmit);
+popupFormEl.addEventListener("submit", handleFormSubmit);
 
 initialCards.forEach((card) => {
   const cardElement = createCard(card);
