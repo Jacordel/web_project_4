@@ -71,7 +71,7 @@ function handleLikeCard(evt) {
 
 function createCard(card) {
   const newCard = elementTemplate.cloneNode(true);
-  (newCard.querySelector(".elements__title").textContent = card.name),
+  (newCard.querySelector(".elements__title").textContent = card.name);
     (newCard.querySelector(".elements__image").src = card.link);
   const previewImageEl = newCard.querySelector(".elements__image");
   previewImageEl.addEventListener("click", () => {
