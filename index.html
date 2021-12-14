@@ -53,7 +53,10 @@
               pattern="[a-zA-Z - ]{1,}"
               required
             />
-            <span class="popup__error popup__error_visible" id="name-input-error"></span>
+            <span
+              class="popup__error popup__error_visible"
+              id="name-input-error"
+            ></span>
             <input
               id="about-me-input"
               class="popup__input popup__input_type_about-me"
@@ -63,7 +66,10 @@
               maxlength="200"
               required
             />
-            <span class="popup__error_visible popup__error" id="about-me-input-error"></span>
+            <span
+              class="popup__error_visible popup__error"
+              id="about-me-input-error"
+            ></span>
             <button class="popup__button" type="submit">Save</button>
           </form>
         </div>
@@ -75,7 +81,9 @@
           <form class="popup__form popup__form_type_add" name="add-form">
             <input
               id="title-input"
-              class="popup__input popup__input_type_title popup__input_type_error"
+              class="
+                popup__input popup__input_type_title popup__input_type_error
+              "
               type="text"
               name="title"
               placeholder="Title"
@@ -83,16 +91,26 @@
               maxlength="30"
               required
             />
-            <span class="popup__error_visible popup__error" id="title-input-error">Please fill out this field</span>
+            <span
+              class="popup__error_visible popup__error"
+              id="title-input-error"
+              >Please fill out this field</span
+            >
             <input
               id="image-input"
-              class="popup__input popup__input_type_link popup__input_type_error"
+              class="
+                popup__input popup__input_type_link popup__input_type_error
+              "
               type="url"
               name="image-link"
               placeholder="Image link"
               required
             />
-            <span class="popup__error_visible popup__error" id="image-input-error">Please fill out this field</span>
+            <span
+              class="popup__error_visible popup__error"
+              id="image-input-error"
+              >Please fill out this field</span
+            >
             <button class="popup__button" type="submit">Create</button>
           </form>
         </div>
@@ -102,7 +120,7 @@
         <div class="popup__box popup__box_type_preview">
           <button class="popup__close-btn" type="button"></button>
           <figure class="popup__figure">
-            <img class="popup__preview-image"/>
+            <img class="popup__preview-image" />
             <figcaption class="popup__figure-caption"></figcaption>
           </figure>
         </div>
@@ -115,7 +133,7 @@
     <template id="element-template">
       <li class="elements__place">
         <button class="elements__trash-button" type="button"></button>
-        <img class="elements__image"/>
+        <img class="elements__image" />
         <div class="elements__title-container">
           <h2 class="elements__title"></h2>
           <button class="elements__like-button" type="button"></button>
