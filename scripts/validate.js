@@ -1,7 +1,8 @@
-const showInputError = (input, form, {errorClass}) => {
+const showInputError = (input, form, {errorClass, inputErrorClass}) => {
   const errorSpan = form.querySelector('#' + input.id + '-error');
   errorSpan.textContent = input.validationMessage;
   errorSpan.classList.add(errorClass);
+  input.classList.add(inputErrorClass);
 };
 
 const hideInputError = (input, form, {errorClass}) => {
@@ -27,12 +28,7 @@ const toggleButton = (inputElements, button, settings) => {
     button.disabled = false;
   } else {
     button.disabled = true;
-    button.classList.add(settings.inactiveButtonClass);
   };
-};
-
-const handleSubmitButton = () => {
-
 };
 
 const setEventListeners = (form, settings) => {
