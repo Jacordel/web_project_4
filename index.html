@@ -44,6 +44,7 @@
           <h2 class="popup__title">Edit profile</h2>
           <form class="popup__form popup__form_type_edit" name="edit-form">
             <input
+              id="name-input"
               class="popup__input popup__input_type_name popup__input_type_error"
               type="text"
               name="name"
@@ -52,7 +53,9 @@
               pattern="[a-zA-Z - ]{1,}"
               required
             />
+            <span class="popup__error popup__error_visible" id="name-input-error">Please fill out this field</span>
             <input
+              id="about-me-input"
               class="popup__input popup__input_type_about-me popup__input_type_error"
               type="text"
               name="about-me"
@@ -60,7 +63,8 @@
               maxlength="200"
               required
             />
-            <button class="popup__button popup__button_disabled" type="submit">Save</button>
+            <span class="popup__error_visible popup__error" id="about-me-input-error">Please fill out this field</span>
+            <button class="popup__button" type="submit">Save</button>
           </form>
         </div>
       </div>
@@ -70,6 +74,7 @@
           <h2 class="popup__title">New Place</h2>
           <form class="popup__form popup__form_type_add" name="add-form">
             <input
+              id="title-input"
               class="popup__input popup__input_type_title popup__input_type_error"
               type="text"
               name="title"
@@ -78,14 +83,17 @@
               maxlength="30"
               required
             />
+            <span class="popup__error_visible popup__error" id="title-input-error">Please fill out this field</span>
             <input
+              id="image-input"
               class="popup__input popup__input_type_link popup__input_type_error"
               type="url"
               name="image-link"
               placeholder="Image link"
               required
             />
-            <button class="popup__button popup__button_disabled" type="submit">Create</button>
+            <span class="popup__error_visible popup__error" id="image-input-error">Please fill out this field</span>
+            <button class="popup__button" type="submit">Create</button>
           </form>
         </div>
       </div>

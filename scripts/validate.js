@@ -1,28 +1,53 @@
-// enabling validation by calling enableValidation()
-// pass all the settings on call
+const showInputError = (input, form, {errorClass}) => {
+  const errorSpan = form.querySelector('#' + input.id + '-error');
+  errorSpan.textContent = input.validationMessage;
+  errorSpan.classList.add(errorClass);
+};
 
-const checkInputValidity = (inputElement) => {
-    console.log(inputElement.validity.valid);
-}
+const hideInputError = (input, form, {errorClass}) => {
+  const errorSpan = form.querySelector('#' + input.id + '-error');
+  errorSpan.textContent = "";
+  errorSpan.classList.remove(errorClass);
+};
+
+const checkInputValidity = (form, input, settings) => {
+  if (input.validity.valid) {
+    hideInputError(input, form, settings);
+  } else {
+    showInputError(input, form, settings);
+  };
+};
+
+const hasValidInput = (inputElements) => {
+  return inputElements.every((input) => input.validity.valid === true);
+};
+
+const toggleButton = (inputElements, button, settings) => {
+  if (hasValidInput(inputElements)) {
+    button.disabled = false;
+  } else {
+    button.disabled = true;
+    button.classList.add(settings.inactiveButtonClass);
+  };
+};
+
+const handleSubmitButton = () => {
+
+};
 
 const setEventListeners = (form, settings) => {
-  //grab all inputs
-  const inputElements = Array.from(document.querySelectorAll(settings.inputSelector));
-  //loop through all inputs and check validity
-  inputElements.forEach((inputElement) => {
-    inputElement.addEventListener('input', (e) => {
-    //check validity
-    checkInputValidity(inputElement);
-     //if input invalid, show errorMessage
-    //else remove errorMessage & enableButton
+  const inputElements = [...form.querySelectorAll(settings.inputSelector)];
+  const submitButton = form.querySelector(settings.submitButtonSelector);
+  inputElements.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      checkInputValidity(form, input, settings);
+      toggleButton(inputElements, submitButton, settings);
     });
   });
 };
 
 const enableValidation = (settings) => {
-  const formElements = Array.from(
-    document.querySelectorAll(settings.formSelector)
-  );
+  const formElements = [...document.querySelectorAll(settings.formSelector)];
   formElements.forEach((form) => {
     form.addEventListener("submit", (e) => e.preventDefault());
     setEventListeners(form, settings);

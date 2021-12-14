@@ -1,3 +1,5 @@
+const ESC_KEYCODE = 27;
+
 const elementTemplate = document
   .querySelector("#element-template")
   .content.querySelector(".elements__place");
@@ -34,17 +36,32 @@ const editFormAboutMeInput = document.querySelector(
 const addFormTitleInput = document.querySelector(".popup__input_type_title");
 const addFormLinkInput = document.querySelector(".popup__input_type_link");
 
+const isEscEvt = (evt, action) => {
+  const activePopup = document.querySelector(".popup_open");
+  if (evt.which === ESC_KEYCODE) {
+    action(activePopup);
+  };
+};
+
+const handleEscUp = (evt) => {
+  evt.preventDefault();
+  isEscEvt(evt, closePopup);
+};
+
 function openPopup(popup) {
   popup.classList.add("popup_open");
+  document.addEventListener('keyup', handleEscUp);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_open");
+  document.removeEventListener('keyup', handleEscUp);
 }
 
 function handlePreviewPicture(preview) {
   openPreviewPopupEl.classList.add("popup_open");
-
+  document.addEventListener('keyup', handleEscUp);
+  
   previewImageEl.src = preview.link;
   previewImageEl.alt = preview.name;
   figureCaptionEl.textContent = preview.name;
@@ -55,6 +72,7 @@ addPopupCloseBtnEl.addEventListener("click", () => closePopup(addPopupEl));
 previewCloseBtnEl.addEventListener("click", () =>
   closePopup(openPreviewPopupEl)
 );
+
 profileAddBtnEl.addEventListener("click", () => openPopup(addPopupEl));
 profileEditBtnEl.addEventListener("click", () => {
   editFormNameInput.value = profileNameEl.textContent;
