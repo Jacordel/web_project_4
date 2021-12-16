@@ -5,10 +5,11 @@ const showInputError = (input, form, { errorClass, inputErrorClass }) => {
   input.classList.add(inputErrorClass);
 };
 
-const hideInputError = (input, form, { errorClass }) => {
+const hideInputError = (input, form, { errorClass, inputErrorClass }) => {
   const errorSpan = form.querySelector("#" + input.id + "-error");
   errorSpan.textContent = "";
   errorSpan.classList.remove(errorClass);
+  input.classList.remove(inputErrorClass);
 };
 
 const checkInputValidity = (form, input, settings) => {
@@ -26,8 +27,10 @@ const hasValidInput = (inputElements) => {
 const toggleButton = (inputElements, button, settings) => {
   if (hasValidInput(inputElements)) {
     button.disabled = false;
+    button.classList.remove(settings.inactiveButtonClass);
   } else {
     button.disabled = true;
+    button.classList.add(settings.inactiveButtonClass);
   }
 };
 
