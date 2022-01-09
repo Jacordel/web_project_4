@@ -1,14 +1,22 @@
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { openPopup,
+  closePopup,
+  handleEditProfileFormSubmit,
+  handleAddCardSubmit,
+ } from "./util.js";
+
+
 const ESC_KEYCODE = 27;
 
+const cardTemplate = document.querySelector("#element-template");
 const elementTemplate = document
   .querySelector("#element-template")
   .content.querySelector(".elements__place");
-
 const popups = document.querySelectorAll(".popup");
 const popupEditProfile = document.querySelector(".popup_type_edit");
 const popupAddCard = document.querySelector(".popup_type_add");
 const popupPreview = document.querySelector(".popup_type_preview");
-const popupFormEl = document.querySelector(".popup__form");
 const popupFormEditEl = document.querySelector(".popup__form_type_edit");
 const popupFormAddEl = document.querySelector(".popup__form_type_add");
 const placesList = document.querySelector(".elements__grid");
@@ -35,109 +43,113 @@ const editFormAboutMeInput = document.querySelector(
 );
 const addFormTitleInput = document.querySelector(".popup__input_type_title");
 const addFormLinkInput = document.querySelector(".popup__input_type_link");
-const disabledButton = document.querySelector("#button-disabled");
+const addButton = document.querySelector("#add-button");
 
+
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
+
+//runs escape usability
 const isEscEvt = (evt, action) => {
   const activePopup = document.querySelector(".popup_open");
   if (evt.which === ESC_KEYCODE) {
     action(activePopup);
   }
-};
-
+}
+//handles escape button
 const handleEscUp = (evt) => {
   evt.preventDefault();
   isEscEvt(evt, closePopup);
-};
-
-function openPopup(popup) {
-  popup.classList.add("popup_open");
-  document.addEventListener("keyup", handleEscUp);
 }
 
-function closePopup(popup) {
-  popup.classList.remove("popup_open");
-  document.removeEventListener("keyup", handleEscUp);
-}
-
-function handlePreviewPicture(preview) {
-  openPopup(popupPreview);
-
-  previewImageEl.src = preview.link;
-  previewImageEl.alt = preview.name;
-  figureCaptionEl.textContent = preview.name;
-}
-
+//event listeners for closing popup from close button
 editPopupCloseBtnEl.addEventListener("click", () =>
   closePopup(popupEditProfile)
 );
 addPopupCloseBtnEl.addEventListener("click", () => closePopup(popupAddCard));
 previewCloseBtnEl.addEventListener("click", () => closePopup(popupPreview));
 
+//disables button when form is not validated
 function disableAddButton() {
-  disabledButton.classList.add("popup__button_disabled");
-  disabledButton.disabled = true;
+  addButton.classList.add("popup__button_disabled");
+  addButton.disabled = true;
 }
 
+//resets form and opens up popup for adding card
 profileAddBtnEl.addEventListener("click", () => {
   popupFormAddEl.reset();
   disableAddButton();
   openPopup(popupAddCard);
 });
 
+//sets values of previous inputs of edit form.
+//then opens up modal
 profileEditBtnEl.addEventListener("click", () => {
   editFormNameInput.value = profileNameEl.textContent;
   editFormAboutMeInput.value = profileProfessionEl.textContent;
   openPopup(popupEditProfile);
 });
 
-function handleDeleteCard(evt) {
-  evt.target.parentNode.remove();
-}
+//validation settings
+const validationSettings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
 
-function handleLikeCard(evt) {
-  evt.target.classList.toggle("elements__like-button_active");
-}
+const editFormEl = popupEditProfile.querySelector(".popup__form");
+const addFormEl = popupAddCard.querySelector(".popup__form");
 
-function createCard(card) {
-  const newCard = elementTemplate.cloneNode(true);
-  newCard.querySelector(".elements__title").textContent = card.name;
-  newCard.querySelector(".elements__image").src = card.link;
-  const previewImageEl = newCard.querySelector(".elements__image");
-  previewImageEl.addEventListener("click", () => {
-    handlePreviewPicture(card);
-  });
-  const deleteButton = newCard.querySelector(".elements__trash-button");
-  deleteButton.addEventListener("click", handleDeleteCard);
-  const likeButton = newCard.querySelector(".elements__like-button");
-  likeButton.addEventListener("click", handleLikeCard);
-  return newCard;
-}
+const editFormValidator = new FormValidator(
+  validationSettings,
+  editFormEl);
+editFormValidator.enableValidation();
 
-popupFormAddEl.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-  const newPlace = {
-    name: addFormTitleInput.value,
-    link: addFormLinkInput.value,
-  };
-  renderCard(createCard(newPlace));
-  closePopup(popupAddCard);
-});
+const addFormValidator = new FormValidator(
+  validationSettings,
+  addFormEl);
+addFormValidator.enableValidation();
 
-function renderCard(cardElement) {
-  placesList.prepend(cardElement);
-}
-
-function handleEditProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileNameEl.textContent = editFormNameInput.value;
-  profileProfessionEl.textContent = editFormAboutMeInput.value;
-  closePopup(popupEditProfile);
-}
 popupFormEditEl.addEventListener("submit", handleEditProfileFormSubmit);
+popupFormAddEl.addEventListener("submit", handleAddCardSubmit);
 
-initialCards.forEach((card) => {
-  const cardElement = createCard(card);
-  renderCard(cardElement);
+function renderCard(cardData) {
+  const card = new Card(cardTemplate, cardData);
+  addCard(card.render());
+}
+
+function addCard(card) {
+  placesList.prepend(card);
+}
+
+initialCards.forEach((cardItem) => {
+  renderCard(cardItem);
 });
 
 popups.forEach((popup) => {
@@ -147,3 +159,17 @@ popups.forEach((popup) => {
     }
   });
 });
+
+export { 
+  popupPreview, 
+  previewImageEl, 
+  figureCaptionEl, 
+  popupEditProfile, 
+  popupAddCard, 
+  profileProfessionEl,
+  profileNameEl,
+  editFormNameInput, 
+  editFormAboutMeInput,
+  handleEscUp,
+  renderCard
+};
