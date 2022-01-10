@@ -1,16 +1,16 @@
 import {
   popupEditProfile,
   popupAddCard,
+  addButton,
   profileProfessionEl,
   profileNameEl,
   editFormNameInput,
   editFormAboutMeInput,
   handleEscUp,
   renderCard
-} from "./index.js";
+} from "../index.js";
 
-// const nameInput = document.querySelector("#name-input");
-// const aboutMeInput = document.querySelector("#about-me-input");
+
 const titleInput = document.querySelector("#title-input");
 const imageInput = document.querySelector("#image-input");
 
@@ -18,6 +18,11 @@ const imageInput = document.querySelector("#image-input");
 function openPopup(popup) {
   popup.classList.add("popup_open");
   document.addEventListener("keyup", handleEscUp);
+}
+
+function disableAddButton() {
+  addButton.classList.add("popup__button_disabled");
+  addButton.disabled = true;
 }
 
 function closePopup(popup) {
@@ -46,6 +51,7 @@ function handleAddCardSubmit(e) {
 
 export {
   openPopup,
+  disableAddButton,
   closePopup,
   handleEditProfileFormSubmit,
   handleAddCardSubmit,

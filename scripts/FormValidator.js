@@ -26,9 +26,9 @@ class FormValidator {
 
   _checkInputValidity(input) {
     if (input.validity.valid) {
-      this._hideInputError(input, this._settings);
+      this._hideInputError(input);
     } else {
-      this._showInputError(input, this._settings);
+      this._showInputError(input);
     }
   }
 
@@ -37,7 +37,7 @@ class FormValidator {
   }
 
   _toggleButton() {
-    if (this._hasValidInput(this._inputElements)) {
+    if (this._hasValidInput()) {
       this._submitButton.disabled = false;
       this._submitButton.classList.remove(this._inactiveButtonClass);
     } else {
@@ -53,14 +53,14 @@ class FormValidator {
     this._inputElements.forEach((input) => {
       input.addEventListener("input", (e) => {
         this._checkInputValidity(input, this._form);
-        this._toggleButton(this._inputElements, this._submitButton);
+        this._toggleButton();
       });
     });
   }
 
   enableValidation() {
     this._form.addEventListener("submit", (e) => e.preventDefault());
-    this._setEventListeners(this._settings);
+    this._setEventListeners();
   }
 }
 
