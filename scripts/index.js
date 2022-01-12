@@ -64,7 +64,7 @@ previewCloseBtnEl.addEventListener("click", () => closePopup(popupPreview));
 //resets form and opens up popup for adding card
 profileAddBtnEl.addEventListener("click", () => {
   popupFormAddEl.reset();
-  formValidators[addFormEl.getAttribute("name")].resetValidation();
+  formValidators[addFormEl.getAttribute("name")].disableAddButton();
   openPopup(popupAddCard);
 });
 
