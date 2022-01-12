@@ -1,12 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import {
-  openPopup,
-  disableAddButton,
-  closePopup,
-  handleEditProfileFormSubmit,
-  handleAddCardSubmit,
-} from "./utils/util.js";
+import { openPopup, closePopup } from "./utils/util.js";
 import { initialCards } from "./utils/constants.js";
 
 const ESC_KEYCODE = 27;
@@ -44,6 +38,8 @@ const editFormAboutMeInput = document.querySelector(
   ".popup__input_type_about-me"
 );
 const addButton = document.querySelector("#add-button");
+const titleInput = document.querySelector("#title-input");
+const imageInput = document.querySelector("#image-input");
 
 //runs escape usability
 const isEscEvt = (evt, action) => {
@@ -68,7 +64,7 @@ previewCloseBtnEl.addEventListener("click", () => closePopup(popupPreview));
 //resets form and opens up popup for adding card
 profileAddBtnEl.addEventListener("click", () => {
   popupFormAddEl.reset();
-  disableAddButton();
+  formValidators[addFormEl.getAttribute("name")].resetValidation();
   openPopup(popupAddCard);
 });
 
@@ -82,6 +78,7 @@ profileEditBtnEl.addEventListener("click", () => {
 
 //validation settings
 const validationSettings = {
+  formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
@@ -92,14 +89,45 @@ const validationSettings = {
 const editFormEl = popupEditProfile.querySelector(".popup__form");
 const addFormEl = popupAddCard.querySelector(".popup__form");
 
-const editFormValidator = new FormValidator(validationSettings, editFormEl);
-editFormValidator.enableValidation();
+const formValidators = {
+  "edit-profile": new FormValidator(validationSettings, editFormEl),
+  "create-card": new FormValidator(validationSettings, addFormEl),
+};
 
-const addFormValidator = new FormValidator(validationSettings, addFormEl);
-addFormValidator.enableValidation();
+// enable validation
+const enableValidation = (settings) => {
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
+  formList.forEach((form) => {
+    const validator = new FormValidator(settings, form);
+    const name = form.getAttribute("name");
+
+    formValidators[name] = validator;
+    validator.enableValidation();
+  });
+};
+enableValidation(validationSettings);
 
 popupFormEditEl.addEventListener("submit", handleEditProfileFormSubmit);
 popupFormAddEl.addEventListener("submit", handleAddCardSubmit);
+
+// these are event handlers for modal windows.
+function handleEditProfileFormSubmit(e) {
+  e.preventDefault();
+  profileNameEl.textContent = editFormNameInput.value;
+  profileProfessionEl.textContent = editFormAboutMeInput.value;
+  closePopup(popupEditProfile);
+}
+
+function handleAddCardSubmit(e) {
+  e.preventDefault();
+  const cardData = {
+    name: titleInput.value,
+    link: imageInput.value,
+  };
+
+  renderCard(cardData);
+  closePopup(popupAddCard);
+}
 
 function renderCard(cardData) {
   const card = new Card(cardTemplate, cardData);
@@ -126,13 +154,5 @@ export {
   popupPreview,
   previewImageEl,
   figureCaptionEl,
-  popupEditProfile,
-  popupAddCard,
-  addButton,
-  profileProfessionEl,
-  profileNameEl,
-  editFormNameInput,
-  editFormAboutMeInput,
   handleEscUp,
-  renderCard,
 };
