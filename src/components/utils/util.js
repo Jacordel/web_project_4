@@ -1,4 +1,4 @@
-import { handleEscUp } from "../index.js";
+import { handleEscUp } from "../../pages/index.js";
 
 // functions that open/closes modal windows.
 function openPopup(popup) {

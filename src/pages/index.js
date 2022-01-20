@@ -1,7 +1,7 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import { openPopup, closePopup } from "./utils/util.js";
-import { initialCards } from "./utils/constants.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { openPopup, closePopup } from "../components/utils/util.js";
+import { initialCards } from "../components/utils/constants.js";
 
 const ESC_KEYCODE = 27;
 

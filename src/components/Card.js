@@ -1,4 +1,4 @@
-import { popupPreview, previewImageEl, figureCaptionEl } from "./index.js";
+import { popupPreview, previewImageEl, figureCaptionEl } from "../pages/index.js";
 import { openPopup } from "./utils/util.js";
 
 class Card {
