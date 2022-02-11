@@ -1,21 +1,20 @@
-import { popupPreview, previewImageEl, figureCaptionEl } from "../pages/index.js";
-import { openPopup } from "./utils/util.js";
-
 class Card {
-  constructor(cardTemplate, cardData) {
+  constructor({ cardData, handlePreviewPopup }, elementTemplate) {
     this._cardData = cardData;
-    this._cardTemplate = cardTemplate;
+    this._handlePreviewPopup = handlePreviewPopup;
+
+    this._cardTemplate = document.querySelector(`#${elementTemplate}`);
   }
 
   render() {
-    this._element = this._cardTemplate.cloneNode(true);
+    this._element = this._cardTemplate.content.cloneNode(true).querySelector(".elements__place");
 
     const titleEl = this._element.querySelector(".elements__title");
     const imageEl = this._element.querySelector(".elements__image");
 
-    titleEl.textContent = this._cardData.name;
-    imageEl.alt = this._cardData.name;
     imageEl.src = this._cardData.link;
+    titleEl.textContent = this._cardData.title;
+    imageEl.alt = this._cardData.title;
 
     this._setEventListeners();
     return this._element;
@@ -49,8 +48,8 @@ class Card {
     openPopup(popupPreview);
 
     previewImageEl.src = this._cardData.link;
-    previewImageEl.alt = this._cardData.name;
-    figureCaptionEl.textContent = this._cardData.name;
+    previewImageEl.alt = this._cardData.title;
+    figureCaptionEl.textContent = this._cardData.title;
   }
 }
 
