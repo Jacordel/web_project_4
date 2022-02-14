@@ -1,13 +1,15 @@
 class Card {
-  constructor({ cardData, handlePreviewPopup }, elementTemplate) {
+  constructor({ cardData, handlePreviewPopup }, elementTemplateSelector) {
     this._cardData = cardData;
     this._handlePreviewPopup = handlePreviewPopup;
 
-    this._cardTemplate = document.querySelector(`#${elementTemplate}`);
+    this._cardTemplate = document.querySelector(elementTemplateSelector);
   }
 
   render() {
-    this._element = this._cardTemplate.content.cloneNode(true).querySelector(".elements__place");
+    this._element = this._cardTemplate.content
+      .cloneNode(true)
+      .querySelector(".elements__place");
 
     const titleEl = this._element.querySelector(".elements__title");
     const imageEl = this._element.querySelector(".elements__image");
@@ -41,7 +43,8 @@ class Card {
   }
 
   _handleDeleteButton() {
-    this._element.querySelector(".elements__trash-button").parentNode.remove();
+    this._element.remove();
+    this._element = null;
   }
 
   _handlePreviewPopup() {
